@@ -20,7 +20,7 @@ function createCardLayout(parentEl, el) {
   card.setAttribute('data-id', el);
   const front = createElement('div', ['card__front']);
   const back = createElement('div', ['card__back']);
-  const img = createElement('img', [], { src: `${BASE}${el}.png`, alt: '', width: '245', height: '245' });
+  const img = createElement('img', [], { src: `${BASE}${el}.png`, alt: '', width: '245', height: '245',  draggable: 'false'});
   back.appendChild(img);
   card.appendChild(front);
   card.appendChild(back);

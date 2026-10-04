@@ -2,6 +2,7 @@ import { createElement } from './utils';
 import { startGame } from './game';
 import { renderLeaderboard } from './leaderboard';
 const body = document.body;
+const BASE = import.meta.env.BASE_URL;
 
 function renderGame() {
   const pageWrapper = createElement('div', ['wrapper']);
@@ -19,7 +20,7 @@ function renderGame() {
   const logoWrapper = createElement('div', ['logo__wrapper']);
   header.appendChild(logoWrapper);
 
-  const logo = createElement('img', ['logo'], { src: '../logo.png' });
+  const logo = createElement('img', ['logo'], { src: '${BASE}logo.png' });
   logoWrapper.appendChild(logo);
 
   const title = createElement('p', ['header__title'], {}, 'Memory Game');

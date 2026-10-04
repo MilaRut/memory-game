@@ -1,6 +1,7 @@
 import { createElement, shuffleArray, clearClasses } from '../js/utils';
 const STARTARR = ['01', '02', '03', '04', '05', '06', '07', '08'];
 const MAX = 8;
+const BASE = import.meta.env.BASE_URL;
 
 let count = 0;
 let totalSteps = 0;
@@ -18,7 +19,7 @@ function createCardLayout(parentEl, el) {
   card.setAttribute('data-id', el);
   const front = createElement('div', ['card__front']);
   const back = createElement('div', ['card__back']);
-  const img = createElement('img', [], { src: `../img/${el}.png`, alt: '', width: '245', height: '245' });
+  const img = createElement('img', [], { src: `${BASE}${el}.png`, alt: '', width: '245', height: '245' });
   back.appendChild(img);
   card.appendChild(front);
   card.appendChild(back);

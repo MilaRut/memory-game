@@ -1,0 +1,116 @@
+:root {
+  --bg-main: #F3EFE6;
+  --bg-secondary: #f0dfba;
+  --text-primary: #030303;
+  --accent: #D6A84F;
+  --accent-bright: #744d00;
+  --accent-light: #f3efde;
+  --hover-blue: #3b5074;
+  --border-dark: #44587c;
+
+  --font-main: Arial, sans-serif;
+  --font-accent: Georgia, serif;
+  --font-size-base: 16px;
+
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+html,
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  min-height: 100dvh;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+body.no-scroll {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+  background-color: var(--bg-secondary);
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  height: 90px;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo__wrapper,
+.btns__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo__wrapper {
+  gap: 8px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.btns__wrapper {
+  gap: 24px;
+}
+
+.btns__wrapper {
+  button {
+    border: 1px solid var(--text-primary);
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+}

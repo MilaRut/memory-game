@@ -1,19 +1,18 @@
 dialog {
   margin: auto;
-  border: 1px solid var(--text-primary);
+  border: none;
   border-radius: 10px;
   padding: 20px;
   min-width: 300px;
+  background-color: #ffffff;
 
   button {
     width: 100%;
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 8px;
   }
 
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
   }
 
   &[data-dialog="leaderboard"] {
@@ -85,4 +84,10 @@ dialog {
 
 .dialog__restart-btn {
   margin-bottom: 10px;
+}
+
+.dialog {
+  button {
+    font-size: 16px;
+  }
 }

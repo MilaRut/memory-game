@@ -1,5 +1,4 @@
 @import "./css/global.css";
 @import "./css/cards.css";
-@import "./css/stats.css";
-@import "./css/modal.css";
-
+@import "./css/dialog.css";
+@import "./css/themes.css";

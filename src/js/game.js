@@ -1,9 +1,34 @@
 import { createElement, shuffleArray, clearClasses } from '../js/utils';
 import { renderWinmodal } from './winmodal';
 
-const STARTARR = ['01', '02', '03', '04', '05', '06', '07', '08'];
+const THEMES = ['winter', 'spring', 'summer', 'fall'];
+const THEME_KEY = 'mrut_theme';
+const STARTARR = ['1', '2', '3', '4', '5', '6', '7', '8'];
 const MAX = 8;
 const BASE = import.meta.env.BASE_URL;
+
+let theme = (() => {
+  const saved = localStorage.getItem(THEME_KEY);
+  return THEMES.includes(saved) ? saved : 'fall';
+})();
+
+export function getTheme() {
+  return theme;
+}
+
+export function setTheme(newTheme) {
+  if (!THEMES.includes(newTheme) || newTheme === theme) return;
+  theme = newTheme;
+  localStorage.setItem(THEME_KEY, theme);
+
+  const wrapper = document.querySelector('.wrapper');
+  if (wrapper) {
+    THEMES.forEach((t) => wrapper.classList.remove(t));
+    wrapper.classList.add(theme);
+  }
+
+  startGame();
+}
 
 let count = 0;
 let totalSteps = 0;
@@ -11,6 +36,7 @@ let pairs = 0;
 let firstCard = null;
 let secondCard = null;
 let timeoutId = null;
+let foundTimeoutId = null;
 
 function createCardsArray() {
   const fullArr = STARTARR.concat(STARTARR);
@@ -20,13 +46,14 @@ function createCardsArray() {
 function createCardLayout(parentEl, el) {
   const card = createElement('div', ['card']);
   card.setAttribute('data-id', el);
+  const cardContent = createElement('div', ['card__content']);
   const front = createElement('div', ['card__front']);
   const back = createElement('div', ['card__back']);
-  const img = createElement('img', [], { src: `${BASE}${el}.png`, alt: '', width: '245', height: '245',  draggable: 'false'});
-  back.appendChild(img);
-  card.appendChild(front);
-  card.appendChild(back);
-  parentEl.appendChild(card);
+  const img = createElement('img', [], { src: `${BASE}${theme}-${el}.png`, alt: '', width: '245', height: '245', draggable: 'false' });
+  back.append(img);
+  cardContent.append(front, back);
+  card.append(cardContent);
+  parentEl.append(card);
 }
 
 function renderCards() {
@@ -83,18 +110,25 @@ function handleCardClick(e) {
     document.querySelector('.stats__steps-num').textContent = totalSteps;
 
     if (firstCard.dataset.id === secondCard.dataset.id) {
-      firstCard.classList.add('is-found');
-      secondCard.classList.add('is-found');
-      clearClasses(document.querySelectorAll('.card'), 'is-active');
+      const f = firstCard;
+      const s = secondCard;
       count = 0;
       pairs++;
-      document.querySelector('.pairs__steps-num').textContent = `${pairs} из ${MAX}`;
+      document.querySelector('.stats__pairs-num').textContent = `${pairs} из ${MAX}`;
       firstCard = null;
       secondCard = null;
-      cards.style.pointerEvents = '';
-      if (pairs === MAX) {
-        endGame();
-      }
+
+      foundTimeoutId = setTimeout(() => {
+        f.classList.add('is-found');
+        s.classList.add('is-found');
+        clearClasses(document.querySelectorAll('.card'), 'is-active');
+        foundTimeoutId = null;
+
+        cards.style.pointerEvents = '';
+        if (pairs === MAX) {
+          endGame();
+        }
+      }, 300);
     } else {
       count = 0;
       timeoutId = setTimeout(() => {
@@ -113,6 +147,10 @@ export function startGame() {
     clearTimeout(timeoutId);
     timeoutId = null;
   }
+  if (foundTimeoutId !== null) {
+    clearTimeout(foundTimeoutId);
+    foundTimeoutId = null;
+  }
 
   const cards = document.querySelector('.cards');
   cards.style.pointerEvents = '';
@@ -121,7 +159,7 @@ export function startGame() {
   pairs = 0;
   firstCard = null;
   secondCard = null;
-  document.querySelector('.pairs__steps-num').textContent = `${pairs} из ${MAX}`;
+  document.querySelector('.stats__pairs-num').textContent = `${pairs} из ${MAX}`;
   document.querySelector('.stats__steps-num').textContent = totalSteps;
 
   renderCards();

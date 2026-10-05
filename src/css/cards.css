@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2%;
-  width: min(100%, calc(100dvh - 300px));
+  width: min(100%, calc(100dvh - 320px));
   aspect-ratio: 1 / 1;
   margin: 0 auto;
 }

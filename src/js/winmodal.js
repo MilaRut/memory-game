@@ -21,12 +21,13 @@ export function renderWinmodal(totalSteps) {
 
   content.replaceChildren();
 
+  dialog.setAttribute('data-dialog', 'win');
+  dialog.showModal();
+  document.body.classList.add('no-scroll');
+
   content.append(createElement('p', ['dialog__title'], {}, 'Победа!'));
   const statsContainer = createElement('div', ['dialog__stats']);
   const num = createElement('span', ['dialog__stats-num'], {}, totalSteps);
   statsContainer.append('Вы нашли все пары за ', num, declineEnding(totalSteps));
   content.appendChild(statsContainer);
-
-  dialog.setAttribute('data-dialog', 'win');
-  dialog.showModal();
 }

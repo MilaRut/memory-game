@@ -9,9 +9,10 @@ export function renderLeaderboard() {
   if (!content) return;
 
   content.replaceChildren();
-  dialog.setAttribute('data-dialog', 'leaderboard');
 
+  dialog.setAttribute('data-dialog', 'leaderboard');
   dialog.showModal();
+  document.body.classList.add('no-scroll');
 
   const title = createElement('p', ['dialog__title'], {}, 'Таблица лидеров');
   content.append(title);
@@ -49,6 +50,4 @@ export function renderLeaderboard() {
     row.append(createElement('td', [], {}, String(el.steps)));
     row.append(createElement('td', [], {}, formattedDate));
   });
-
-  dialog.showModal();
 }

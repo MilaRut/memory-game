@@ -1,31 +1,39 @@
 import { createElement } from './utils';
 
-export function renderLeaderboard(dialog) {
-  const data = localStorage.getItem('mrut_stats') || null;
+export function renderLeaderboard() {
+  const dialog = document.querySelector('.dialog');
   const content = dialog?.querySelector('.dialog__content');
 
+  const data = localStorage.getItem('mrut_stats') || null;
+
   if (!content) return;
+
+  content.replaceChildren();
+  dialog.setAttribute('data-dialog', 'leaderboard');
+
+  dialog.showModal();
+
+  const title = createElement('p', ['dialog__title'], {}, 'Таблица лидеров');
+  content.append(title);
 
   const arr = data ? JSON.parse(data) : [];
 
   if (!arr.length) {
-    content.textContent = 'Пока нет результатов';
+    const text = createElement('p', ['dialog__text'], {}, 'Пока нет результатов');
+    content.append(text);
     return;
   }
 
-  content.replaceChildren();
-
   const table = createElement('table');
-  content.appendChild(table);
+  content.append(table);
   const thead = createElement('thead');
-  table.appendChild(thead);
   const headerRow = createElement('tr');
-  thead.appendChild(headerRow);
+  thead.append(headerRow);
   ['Место', 'Ходы', 'Дата'].forEach((title) => {
-    headerRow.appendChild(createElement('th', [], {}, title));
+    headerRow.append(createElement('th', [], {}, title));
   });
   const tbody = createElement('tbody');
-  table.appendChild(tbody);
+  table.append(thead, tbody);
 
   arr.forEach((el, ind) => {
     const date = new Date(el.date);
@@ -36,9 +44,11 @@ export function renderLeaderboard(dialog) {
     });
 
     const row = createElement('tr');
-    tbody.appendChild(row);
-    row.appendChild(createElement('td', [], {}, String(ind + 1)));
-    row.appendChild(createElement('td', [], {}, String(el.steps)));
-    row.appendChild(createElement('td', [], {}, formattedDate));
+    tbody.append(row);
+    row.append(createElement('td', [], {}, String(ind + 1)));
+    row.append(createElement('td', [], {}, String(el.steps)));
+    row.append(createElement('td', [], {}, formattedDate));
   });
+
+  dialog.showModal();
 }

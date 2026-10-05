@@ -1,4 +1,6 @@
 import { createElement, shuffleArray, clearClasses } from '../js/utils';
+import { renderWinmodal } from './winmodal';
+
 const STARTARR = ['01', '02', '03', '04', '05', '06', '07', '08'];
 const MAX = 8;
 const BASE = import.meta.env.BASE_URL;
@@ -37,8 +39,7 @@ function renderCards() {
 }
 
 function endGame() {
-  window.win.showModal();
-  document.querySelector('#win-steps').textContent = `${totalSteps} ходов`;
+  renderWinmodal(totalSteps);
   updateLocalStorage();
 }
 

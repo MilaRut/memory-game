@@ -45,7 +45,9 @@ function renderGame() {
     createElement('span', ['btn__text'], {}, 'Таблица лидеров'),
     createElement('img', ['btn__icon'], { src: `${BASE}leaderboard.svg`, alt: '', 'aria-hidden': 'true' })
   );
-  btnsWrapper.append(restartBtn, leaderboardBtn);
+
+  const muteBtn = createElement('button', ['mute-btn']);
+  btnsWrapper.append(restartBtn, leaderboardBtn, muteBtn);
 
   const topContainer = createElement('div', ['top-container']);
   main.append(topContainer);
@@ -89,7 +91,6 @@ function renderGame() {
   const footerText = createElement('p', [], {}, '© 2026');
   const footerLinks = createElement('div', ['footer__links']);
 
-
   const rsLink = createElement('a', ['footer__rsschool'], {
     href: 'https://rs.school/courses/javascript',
     target: '_blank',
@@ -116,7 +117,6 @@ function renderGame() {
   footerLinks.append(rsLink, ghLink);
   footer.append(footerText, footerLinks);
 
-
   const dialog = createElement('dialog', ['dialog'], { id: 'dialog' });
   body.append(dialog);
 
@@ -124,6 +124,12 @@ function renderGame() {
   const dialogRestartBtn = createElement('button', ['dialog__restart-btn', 'restart-btn', 'btn--primary'], { type: 'button' }, 'Новая игра');
   const dialogCloseBtn = createElement('button', ['dialog__close-btn', 'btn--secondary'], { type: 'button' }, 'Закрыть');
   dialog.append(dialogContent, dialogRestartBtn, dialogCloseBtn);
+
+  const audio1 = createElement('audio', [], { id: 'open-sound', src: `${BASE}audio/open.mp3` });
+  const audio2 = createElement('audio', [], { id: 'flip-sound', src: `${BASE}audio/flip.mp3` });
+  const audio3 = createElement('audio', [], { id: 'remove-sound', src: `${BASE}audio/remove.mp3` });
+  const audio4 = createElement('audio', [], { id: 'win-sound', src: `${BASE}audio/win.mp3` });
+  body.append(audio1, audio2, audio3, audio4);
 
   startGame();
 
@@ -166,6 +172,21 @@ function renderGame() {
     }
   });
 
+  muteBtn.addEventListener('click', () => {
+    if (muteBtn.classList.contains('is-active')) {
+      muteBtn.classList.remove('is-active');
+      [audio1, audio2, audio3, audio4].forEach((audio) => {
+        audio.volume = 1;
+      })
+      muteBtn.setAttribute('title', 'Отключить звуки');
+    } else {
+      muteBtn.classList.add('is-active');
+      [audio1, audio2, audio3, audio4].forEach((audio) => {
+        audio.volume = 0;
+      })
+      muteBtn.setAttribute('title', 'Включить звуки');
+    }
+  });
 }
 
 export { renderGame };

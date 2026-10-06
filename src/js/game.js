@@ -7,6 +7,14 @@ const STARTARR = ['1', '2', '3', '4', '5', '6', '7', '8'];
 const MAX = 8;
 const BASE = import.meta.env.BASE_URL;
 
+let count = 0;
+let totalSteps = 0;
+let pairs = 0;
+let firstCard = null;
+let secondCard = null;
+let timeoutId = null;
+let foundTimeoutId = null;
+
 let theme = (() => {
   const saved = localStorage.getItem(THEME_KEY);
   return THEMES.includes(saved) ? saved : 'fall';
@@ -30,13 +38,12 @@ export function setTheme(newTheme) {
   startGame();
 }
 
-let count = 0;
-let totalSteps = 0;
-let pairs = 0;
-let firstCard = null;
-let secondCard = null;
-let timeoutId = null;
-let foundTimeoutId = null;
+function playSound(id) {
+  const audio = document.getElementById(id);
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+}
 
 function createCardsArray() {
   const fullArr = STARTARR.concat(STARTARR);
@@ -68,6 +75,7 @@ function renderCards() {
 function endGame() {
   renderWinmodal(totalSteps);
   updateLocalStorage();
+  playSound('win-sound');
 }
 
 function updateLocalStorage() {
@@ -96,6 +104,7 @@ function handleCardClick(e) {
 
   card.classList.add('is-active');
   count++;
+  playSound('open-sound');
 
   if (count == 1) {
     firstCard = card;
@@ -110,6 +119,7 @@ function handleCardClick(e) {
     document.querySelector('.stats__steps-num').textContent = totalSteps;
 
     if (firstCard.dataset.id === secondCard.dataset.id) {
+      playSound('remove-sound');
       const f = firstCard;
       const s = secondCard;
       count = 0;
@@ -137,6 +147,7 @@ function handleCardClick(e) {
         secondCard = null;
         cards.style.pointerEvents = '';
         timeoutId = null;
+        playSound('flip-sound');
       }, 1000);
     }
   }

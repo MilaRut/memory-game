@@ -1,0 +1,209 @@
+.fall {
+  .header,
+  .footer {
+    background-color: #ffe7b7;
+  }
+
+  .main {
+    background:
+    url("../fall-left.webp") left center / contain no-repeat,
+    url("../fall-right.webp") right center / contain no-repeat,
+    #fff6e4;
+  }
+
+  .theme-option {
+    border-color: #fcd17c;
+  }
+
+  .theme-option:has(input:checked) {
+    background-color: #fcd17c;
+  }
+
+  .card__front {
+    background: url("../fall-pattern.webp") center no-repeat;
+    background-size: cover;
+  }
+}
+
+body:has(.fall) {
+  .btn--secondary {
+    border-color: #fcd17c;
+  }
+
+  .btn--primary {
+    background-color: #fcd17c;
+  }
+
+  tbody tr {
+    &:first-child {
+      background-color: #fcd17c;
+    }
+
+    &:nth-child(2) {
+      background-color: #fcdc9e;
+    }
+
+    &:nth-child(3) {
+      background-color: #ffe7b7;
+    }
+  }
+}
+
+.winter {
+  .header,
+  .footer {
+    background-color: #b7d8f7;
+  }
+
+  .main {
+    background:
+    url("../winter-left.webp") left center / contain no-repeat,
+    url("../winter-right.webp") right center / contain no-repeat,
+    #eaf5ff;
+  }
+
+  .theme-option {
+    border-color: #84bdf1;
+  }
+
+   .theme-option:has(input:checked) {
+    background-color: #84bdf1;
+  }
+
+  .card__front {
+    background: url("../winter-pattern.webp") center no-repeat;
+    background-size: cover;
+  }
+}
+
+body:has(.winter) {
+  .btn--secondary {
+    border-color: #84bdf1;
+  }
+
+  .btn--primary {
+    background-color: #84bdf1;
+  }
+
+  tbody tr {
+    &:first-child {
+      background-color: #84bdf1;
+    }
+
+    &:nth-child(2) {
+      background-color: #9cc8f1;
+    }
+
+    &:nth-child(3) {
+      background-color: #b7d8f7;
+    }
+  }
+}
+
+.spring {
+  .header,
+  .footer {
+    background-color: #d2f3a1;
+  }
+
+  .main {
+    background:
+    url("../spring-left.webp") left center / contain no-repeat,
+    url("../spring-right.webp") right center / contain no-repeat,
+    #e7f3d5;
+  }
+
+  .theme-option{
+    border-color: #a4d855;
+  }
+
+  .theme-option:has(input:checked) {
+    background-color: #a4d855;
+  }
+
+  .card__front {
+    background: url("../spring-pattern.webp") center no-repeat;
+    background-size: cover;
+  }
+}
+
+body:has(.spring) {
+  .btn--secondary {
+    border-color: #a4d855;
+  }
+
+  .btn--primary {
+    background-color: #a4d855;
+  }
+
+  tbody tr {
+    &:first-child {
+      background-color: #a4d855;
+    }
+
+    &:nth-child(2) {
+      background-color: #c5f381;
+    }
+
+    &:nth-child(3) {
+      background-color: #d2f3a1;
+    }
+  }
+}
+
+.summer {
+  .header,
+  .footer {
+    background-color: #9edcfc;
+  }
+
+  .main {
+    background:
+    url("../summer-left.webp") left center / contain no-repeat,
+    url("../summer-right.webp") right center / contain no-repeat,
+    #cbeeff;
+  }
+
+  .theme-option {
+    border-color: #5fc4f7;
+  }
+
+  .theme-option:has(input:checked) {
+    background-color: #5fc4f7;
+  }
+
+  .card__front {
+    background: url("../summer-pattern.webp") center no-repeat;
+    background-size: cover;
+  }
+}
+
+body:has(.summer) {
+  .btn--secondary {
+    border-color: #5fc4f7;
+  }
+
+  .btn--primary {
+    background-color: #5fc4f7;
+  }
+
+  tbody tr {
+    &:first-child {
+      background-color: #5fc4f7;
+    }
+
+    &:nth-child(2) {
+      background-color: #84d0f7;
+    }
+
+    &:nth-child(3) {
+      background-color: #9edcfc;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    background-image: none !important;
+  }
+}

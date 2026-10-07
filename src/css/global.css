@@ -1,0 +1,301 @@
+:root {
+  --bg-main: #F3EFE6;
+  --bg-secondary: #f0dfba;
+  --text-primary: #030303;
+  --accent: #D6A84F;
+  --accent-bright: #744d00;
+  --accent-light: #f3efde;
+  --hover-blue: #3b5074;
+  --border-dark: #44587c;
+
+  --font-size-base: 16px;
+
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html,
+body {
+  font-family: "Huninn", sans-serif;
+  font-size: var(--font-size-base);
+  min-height: 100dvh;
+  scrollbar-gutter: stable;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+body.no-scroll {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+@media (hover: hover) {
+  a:hover,
+  button:hover {
+    opacity: 0.5;
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+  background-color: var(--bg-secondary);
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.header {
+  height: 90px;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo__wrapper,
+.btns__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo__wrapper {
+  gap: 8px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.header__title {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.btns__wrapper {
+  gap: 24px;
+}
+
+.btn__icon {
+  display: none;
+  width: 24px;
+  height: 24px;
+}
+
+.btn__text {
+  display: inline;
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.stats {
+  padding: 20px;
+  border: 1px solid black;
+  backdrop-filter: blur(13px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.stats__steps,
+.stats__pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.stats__steps-num,
+.stats__pairs-num {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.themes-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid black;
+  backdrop-filter: blur(13px);
+  border-radius: 20px;
+}
+
+.legend {
+  width: 100%;
+  text-align: center;
+}
+
+input[type="radio"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.theme-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4bb64;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+@media (hover: hover) {
+  .theme-option:hover {
+    opacity: 0.7;
+  }
+}
+
+.footer__links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.footer {
+  padding: 20px 16px;
+}
+
+.footer__github {
+  position: relative;
+  color: #000000;
+  padding-left: 30px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url("../gh-icon.svg") center no-repeat;
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  border: 2px solid #e4bb64;
+}
+
+.mute-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background: url("../mute.svg") center no-repeat;
+
+  &.is-active {
+    background: url("../unmute.svg") center no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .header {
+    gap:20px;
+    justify-content: space-between;
+  }
+
+  .header__title {
+    font-size: 16px;
+  }
+
+  .btns__wrapper {
+    gap: 10px;
+
+    button {
+      width: 46px;
+      height: 46px;
+      padding: 7px;
+    }
+  }
+
+  .btn__icon {
+    display: inline-block;
+  }
+
+  .btn__text {
+    display: none;
+  }
+
+  .top-container {
+    flex-direction: column-reverse;
+  }
+
+  .stats {
+    width: 100%;
+    justify-content: center;
+  }
+}

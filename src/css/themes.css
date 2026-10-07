@@ -6,8 +6,8 @@
 
   .main {
     background:
-    url("../fall-left.png") left center / contain no-repeat,
-    url("../fall-right.png") right center / contain no-repeat,
+    url("../fall-left.webp") left center / contain no-repeat,
+    url("../fall-right.webp") right center / contain no-repeat,
     #fff6e4;
   }
 
@@ -20,7 +20,7 @@
   }
 
   .card__front {
-    background: url("../fall-pattern.png") center no-repeat;
+    background: url("../fall-pattern.webp") center no-repeat;
     background-size: cover;
   }
 }
@@ -57,8 +57,8 @@ body:has(.fall) {
 
   .main {
     background:
-    url("../winter-left.png") left center / contain no-repeat,
-    url("../winter-right.png") right center / contain no-repeat,
+    url("../winter-left.webp") left center / contain no-repeat,
+    url("../winter-right.webp") right center / contain no-repeat,
     #eaf5ff;
   }
 
@@ -71,7 +71,7 @@ body:has(.fall) {
   }
 
   .card__front {
-    background: url("../winter-pattern.png") center no-repeat;
+    background: url("../winter-pattern.webp") center no-repeat;
     background-size: cover;
   }
 }
@@ -108,8 +108,8 @@ body:has(.winter) {
 
   .main {
     background:
-    url("../spring-left.png") left center / contain no-repeat,
-    url("../spring-right.png") right center / contain no-repeat,
+    url("../spring-left.webp") left center / contain no-repeat,
+    url("../spring-right.webp") right center / contain no-repeat,
     #e7f3d5;
   }
 
@@ -122,7 +122,7 @@ body:has(.winter) {
   }
 
   .card__front {
-    background: url("../spring-pattern.png") center no-repeat;
+    background: url("../spring-pattern.webp") center no-repeat;
     background-size: cover;
   }
 }
@@ -159,8 +159,8 @@ body:has(.spring) {
 
   .main {
     background:
-    url("../summer-left.png") left center / contain no-repeat,
-    url("../summer-right.png") right center / contain no-repeat,
+    url("../summer-left.webp") left center / contain no-repeat,
+    url("../summer-right.webp") right center / contain no-repeat,
     #cbeeff;
   }
 
@@ -173,7 +173,7 @@ body:has(.spring) {
   }
 
   .card__front {
-    background: url("../summer-pattern.png") center no-repeat;
+    background: url("../summer-pattern.webp") center no-repeat;
     background-size: cover;
   }
 }

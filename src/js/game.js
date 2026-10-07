@@ -56,7 +56,7 @@ function createCardLayout(parentEl, el) {
   const cardContent = createElement('div', ['card__content']);
   const front = createElement('div', ['card__front']);
   const back = createElement('div', ['card__back']);
-  const img = createElement('img', [], { src: `${BASE}${theme}-${el}.png`, alt: '', width: '245', height: '245', draggable: 'false' });
+  const img = createElement('img', [], { src: `${BASE}${theme}-${el}.webp`, alt: '', width: '245', height: '245', draggable: 'false' });
   back.append(img);
   cardContent.append(front, back);
   card.append(cardContent);

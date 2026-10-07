@@ -28,7 +28,7 @@ function renderGame() {
   const logoWrapper = createElement('div', ['logo__wrapper']);
   header.append(logoWrapper);
 
-  const logo = createElement('img', ['logo'], { src: `${BASE}logo.png`, alt: 'Лого игры' });
+  const logo = createElement('img', ['logo'], { src: `${BASE}logo.webp`, alt: 'Лого игры' });
   const title = createElement('p', ['header__title'], {}, 'Memory Game');
   logoWrapper.append(logo, title);
 
